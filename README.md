@@ -1,5 +1,11 @@
 # 🏥 City Health Clinic — AI-Powered Appointment Scheduler
 
+> [!IMPORTANT]
+> **Notice for Reviewers/Recruiters:**
+> This project uses a **Bolna Trial Account**. Due to Bolna's security policies, the AI Voice Agent can only make/receive calls to **Verified Phone Numbers** manually added to the Bolna dashboard. If you register with a new number, the "Call Me" feature will return a trial restriction error.
+> 
+> **To see the full functionality in action, please watch the [Demo Video (Coming Soon)](#) or contact the author to have your number whitelisted for testing.**
+
 > A full-stack voice AI application using **Bolna** that allows patients to book medical appointments via a phone call. The AI receptionist ("Sarah") collects patient details and books the appointment automatically. The clinic admin dashboard displays appointments in real-time.
 
 ## 🎯 Problem Statement
@@ -48,7 +54,7 @@ Patient (Phone Call)
 
 - **Voice AI**: [Bolna.dev](https://bolna.dev) (Agent + Telephony)
 - **Backend**: Node.js + Express
-- **Frontend**: Next.js 15 (React)
+- **Frontend**: Next.js 16.2.6 (React 19)
 - **Database**: In-memory (demo) — can be swapped with PostgreSQL/MongoDB
 - **Tunnel**: LocalTunnel / Ngrok (for webhook exposure)
 
