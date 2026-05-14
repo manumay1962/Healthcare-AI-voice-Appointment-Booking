@@ -340,9 +340,13 @@ app.post("/api/call/initiate", async (req, res) => {
   // Strip spaces, dashes, parentheses for clean E.164 format
   phoneNumber = phoneNumber.replace(/[\s\-\(\)]/g, "");
 
-  // Auto-add +91 country code if not present
+  // Auto-add + country code if not present
   if (!phoneNumber.startsWith("+")) {
-    phoneNumber = "+91" + phoneNumber;
+    if (phoneNumber.startsWith("91") && phoneNumber.length >= 12) {
+      phoneNumber = "+" + phoneNumber;
+    } else {
+      phoneNumber = "+91" + phoneNumber;
+    }
   }
 
   const BOLNA_API_KEY = process.env.BOLNA_API_KEY;
@@ -372,6 +376,14 @@ app.post("/api/call/initiate", async (req, res) => {
     const data = await response.json();
     console.log(`📞 [Bolna API] Call initiated to ${phoneNumber}`, data);
 
+    if (!response.ok) {
+      return res.status(400).json({
+        success: false,
+        message: data.message || "Failed to initiate call. Please check your Bolna API key and settings.",
+        error: data
+      });
+    }
+
     res.json({
       success: true, simulated: false,
       message: `AI agent is calling ${phoneNumber} now!`,
@@ -388,10 +400,14 @@ app.get("/api/health", (req, res) => {
   res.json({ status: "ok", uptime: process.uptime(), timestamp: new Date() });
 });
 
-app.listen(PORT, () => {
-  console.log(`\n🏥 City Health Clinic Backend running on port ${PORT}`);
-  console.log(`   📋 Appointments: http://localhost:${PORT}/api/appointments`);
-  console.log(`   📞 Webhook:      http://localhost:${PORT}/api/webhook/bolna`);
-  console.log(`   🔐 Auth:         http://localhost:${PORT}/api/auth/register`);
-  console.log(`   💚 Health:       http://localhost:${PORT}/api/health\n`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`\n🏥 City Health Clinic Backend running on port ${PORT}`);
+    console.log(`   📋 Appointments: http://localhost:${PORT}/api/appointments`);
+    console.log(`   📞 Webhook:      http://localhost:${PORT}/api/webhook/bolna`);
+    console.log(`   🔐 Auth:         http://localhost:${PORT}/api/auth/register`);
+    console.log(`   💚 Health:       http://localhost:${PORT}/api/health\n`);
+  });
+}
+
+module.exports = app;
