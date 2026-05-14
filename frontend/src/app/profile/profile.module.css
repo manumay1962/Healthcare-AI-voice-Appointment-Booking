@@ -1,0 +1,128 @@
+.profilePage {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px 28px 48px;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0 28px;
+  animation: slideUp 0.4s ease;
+}
+.header h1 { font-size: 1.25rem; font-weight: 700; color: var(--text); }
+.backBtn {
+  background: white; border: 1px solid var(--border);
+  color: var(--text-secondary); padding: 7px 16px;
+  border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600;
+  cursor: pointer; transition: border-color 0.2s; font-family: inherit;
+}
+.backBtn:hover { border-color: var(--accent); color: var(--accent); }
+.logoutBtn {
+  background: var(--red-light); border: 1px solid #f5c6c6;
+  color: var(--red); padding: 7px 16px;
+  border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600;
+  cursor: pointer; transition: background 0.2s; font-family: inherit;
+}
+.logoutBtn:hover { background: #fcd2d2; }
+
+.message { padding: 10px 16px; border-radius: var(--radius-sm); font-size: 0.8rem; margin-bottom: 16px; }
+.message_success { background: var(--green-light); color: var(--green); border: 1px solid #b2e5cc; }
+.message_error { background: var(--red-light); color: var(--red); border: 1px solid #f5c6c6; }
+
+.content { display: flex; flex-direction: column; gap: 20px; }
+
+.profileCard {
+  background: white; border: 1px solid var(--border);
+  border-radius: var(--radius-xl); padding: 30px;
+  display: flex; gap: 28px; align-items: flex-start;
+  animation: slideUp 0.4s ease;
+}
+.avatarLarge {
+  width: 70px; height: 70px; border-radius: 50%;
+  background: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; font-weight: 700; color: white; flex-shrink: 0;
+}
+.profileInfo { flex: 1; }
+.userName { font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 16px; }
+
+.infoGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+.infoItem { display: flex; flex-direction: column; gap: 3px; }
+.infoLabel { font-size: 0.7rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; }
+.infoValue { font-size: 0.88rem; color: var(--text); font-weight: 500; }
+
+.editBtn {
+  background: var(--accent); color: white; border: none;
+  padding: 9px 20px; border-radius: var(--radius-md);
+  font-size: 0.82rem; font-weight: 600; cursor: pointer;
+  transition: background 0.2s; font-family: inherit;
+}
+.editBtn:hover { background: var(--accent-dark); }
+
+.editForm { flex: 1; display: flex; flex-direction: column; gap: 14px; }
+.editTitle { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.formGroup { display: flex; flex-direction: column; gap: 5px; flex: 1; }
+.formRow { display: flex; gap: 10px; }
+.formGroup label { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; }
+.formGroup input {
+  background: var(--bg-input); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text); padding: 9px 12px; font-size: 0.85rem; font-family: inherit;
+  transition: border-color 0.2s; outline: none;
+}
+.formGroup input:focus { border-color: var(--accent); }
+
+.divider { padding: 6px 0; border-top: 1px solid var(--border); margin-top: 4px; }
+.divider span { font-size: 0.72rem; color: var(--text-muted); font-weight: 500; }
+
+.editActions { display: flex; gap: 10px; margin-top: 4px; }
+.cancelBtn {
+  flex: 1; background: var(--bg-input); border: 1px solid var(--border);
+  color: var(--text-secondary); padding: 9px 18px; border-radius: var(--radius-sm);
+  font-size: 0.82rem; font-weight: 600; cursor: pointer; font-family: inherit;
+}
+.cancelBtn:hover { border-color: var(--accent); }
+.saveBtn {
+  flex: 1; background: var(--accent); color: white; border: none;
+  padding: 9px 18px; border-radius: var(--radius-sm);
+  font-size: 0.82rem; font-weight: 600; cursor: pointer;
+  transition: background 0.2s; font-family: inherit;
+}
+.saveBtn:hover:not(:disabled) { background: var(--accent-dark); }
+.saveBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.appointmentsSection {
+  background: white; border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 22px;
+  animation: slideUp 0.4s ease backwards;
+}
+.appointmentsSection h3 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; }
+
+.emptyAppts { text-align: center; padding: 36px 20px; color: var(--text-muted); }
+.emptyAppts span { font-size: 2.2rem; display: block; margin-bottom: 6px; }
+.emptyAppts p { font-size: 0.82rem; }
+
+.apptList { display: flex; flex-direction: column; gap: 10px; }
+.apptCard {
+  background: var(--bg-primary); border: 1px solid var(--border);
+  border-radius: var(--radius-md); padding: 14px; transition: border-color 0.2s;
+}
+.apptCard:hover { border-color: var(--accent); }
+.apptTop { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; flex-wrap: wrap; }
+.apptDate, .apptTime { font-size: 0.82rem; font-weight: 600; color: var(--text); }
+.apptBadge { font-size: 0.68rem; font-weight: 600; padding: 2px 9px; border-radius: 999px; margin-left: auto; }
+.apptVoice { background: var(--cyan-light); color: var(--cyan); }
+.apptManual { background: #f0f1f5; color: var(--text-muted); }
+.apptBottom { display: flex; gap: 18px; font-size: 0.78rem; color: var(--text-secondary); }
+
+.loading { text-align: center; padding: 80px 20px; color: var(--text-muted); font-size: 0.9rem; }
+
+@media (max-width: 700px) {
+  .profilePage { padding: 14px; }
+  .profileCard { flex-direction: column; align-items: center; text-align: center; }
+  .infoGrid { grid-template-columns: 1fr; }
+  .formRow { flex-direction: column; }
+  .editActions { flex-direction: column; }
+}

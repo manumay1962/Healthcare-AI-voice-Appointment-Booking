@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-primary: #f8f9fb;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f3f4f8;
+  --bg-input: #f3f4f8;
+
+  --accent: #4f6ef7;
+  --accent-light: #e8ecfe;
+  --accent-dark: #3b55d4;
+  --green: #22a86b;
+  --green-light: #e6f7ef;
+  --amber: #e59a1a;
+  --amber-light: #fef5e0;
+  --red: #e14b4b;
+  --red-light: #fde8e8;
+  --cyan: #1aa5c4;
+  --cyan-light: #e3f6fb;
+
+  --text: #1a1d26;
+  --text-secondary: #5a5f72;
+  --text-muted: #9197a6;
+
+  --border: #e2e5ec;
+  --border-focus: #4f6ef7;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-lg: 0 4px 20px rgba(0,0,0,0.08);
+
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: #c5c9d4; border-radius: 3px; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
