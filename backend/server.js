@@ -400,7 +400,7 @@ app.get("/api/health", (req, res) => {
   res.json({ status: "ok", uptime: process.uptime(), timestamp: new Date() });
 });
 
-if (process.env.NODE_ENV !== 'production') {
+if (!process.env.VERCEL) {
   app.listen(PORT, () => {
     console.log(`\n🏥 City Health Clinic Backend running on port ${PORT}`);
     console.log(`   📋 Appointments: http://localhost:${PORT}/api/appointments`);
