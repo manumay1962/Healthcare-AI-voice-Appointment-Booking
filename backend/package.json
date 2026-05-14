@@ -1,0 +1,19 @@
+{
+  "name": "bolna-healthcare-backend",
+  "version": "1.0.0",
+  "description": "Backend for Bolna Healthcare Appointment Scheduler Voice AI Agent",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "tunnel": "npx -y localtunnel --port 3001"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.3",
+    "uuid": "^10.0.0"
+  }
+}
