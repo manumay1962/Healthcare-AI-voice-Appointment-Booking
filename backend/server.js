@@ -11,32 +11,31 @@ const JWT_SECRET = process.env.JWT_SECRET || "city-health-clinic-secret-2026";
 
 // ─── Middleware ──────────────────────────────────────────────
 app.use(cors());
-app.use(express.json({
-  verify: (req, res, buf, encoding) => {
+
+// Capture raw body for debugging Bolna's malformed JSON
+app.use(express.text({ type: 'application/json' }));
+app.use((req, res, next) => {
+  if (typeof req.body === 'string') {
+    req.rawBody = req.body;
     try {
-      JSON.parse(buf.toString(encoding || 'utf8'));
+      req.body = JSON.parse(req.body);
     } catch (e) {
-      console.log("⚠️ Raw Invalid JSON from Bolna:", buf.toString(encoding || 'utf8'));
-      req.rawBody = buf.toString(encoding || 'utf8');
+      console.log("⚠️ Malformed JSON from Bolna. Attempting to clean...");
+      try {
+        // Fix Bolna's common bug where it double-quotes values like ""value""
+        let cleaned = req.rawBody.replace(/""/g, '"');
+        req.body = JSON.parse(cleaned);
+      } catch (e2) {
+        console.log("❌ Failed to parse even after cleaning.");
+      }
     }
   }
-}));
-app.use((err, req, res, next) => {
-  if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
-    console.log("⚠️ Caught SyntaxError. Attempting to recover...");
-    try {
-      // Fix Bolna's bug where it inserts ""value"" instead of "value"
-      let cleanedBody = req.rawBody.replace(/""/g, '"');
-      const fixedBody = eval('(' + cleanedBody + ')'); 
-      req.body = fixedBody;
-      return next();
-    } catch (e) {
-      console.log("Failed to recover JSON:", e);
-    }
-  }
-  next(err);
+  next();
 });
+
 app.use(express.urlencoded({ extended: true }));
+
+let lastWebhookReceived = null;
 
 // ─── In-Memory Stores ───────────────────────────────────────
 let users = [];
@@ -246,15 +245,19 @@ app.post("/api/appointments", (req, res) => {
   res.status(201).json({ success: true, data: appointment });
 });
 
+app.get("/api/debug/last-webhook", (req, res) => {
+  res.json({ 
+    success: true, 
+    lastWebhookReceived,
+    hint: "If this is null, the backend hasn't received any webhook calls yet."
+  });
+});
+
 app.post("/api/webhook/bolna", (req, res) => {
   console.log("\n📞 ─── BOLNA WEBHOOK RECEIVED ───");
   
-  // Bolna might send the data inside req.body.data or req.body directly
-  // Sometimes it sends it as a string if the JSON was malformed
   let body = req.body;
-  if (typeof body === 'string') {
-    try { body = JSON.parse(body); } catch(e) {}
-  }
+  lastWebhookReceived = body;
   
   console.log("Body:", JSON.stringify(body, null, 2));
 
