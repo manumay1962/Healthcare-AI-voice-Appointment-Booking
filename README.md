@@ -98,7 +98,7 @@ Copy the generated public URL and paste it into your Bolna agent's tool/webhook 
 
 *Dashboard showing real-time appointments booked via Voice AI and manual entry.*
 
-> Screenshots will be added after deployment. To preview the interface, clone the repo and run locally.
+![Dashboard Screenshot](./dashboard.png)
 
 ## Bolna Agent Configuration
 
