@@ -106,24 +106,26 @@ export default function AuthPage() {
         {/* ─── Left Side: Branding ─────────────── */}
         <div className={styles.authBranding}>
           <div className={styles.brandContent}>
-            <span className={styles.brandIcon}>🏥</span>
+            <div className={styles.brandIcon}>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/><path d="M10 10h4"/><path d="M12 8v4"/></svg>
+            </div>
             <h1>City Health Clinic</h1>
             <p>AI-Powered Appointment Scheduling</p>
             <div className={styles.features}>
               <div className={styles.feature}>
-                <span>🤖</span>
+                <span className={styles.featureDot}></span>
                 <span>Voice AI receptionist powered by Bolna</span>
               </div>
               <div className={styles.feature}>
-                <span>📞</span>
+                <span className={styles.featureDot}></span>
                 <span>Book appointments via phone call</span>
               </div>
               <div className={styles.feature}>
-                <span>📊</span>
+                <span className={styles.featureDot}></span>
                 <span>Real-time appointment dashboard</span>
               </div>
               <div className={styles.feature}>
-                <span>👨‍⚕️</span>
+                <span className={styles.featureDot}></span>
                 <span>3 specialist doctors available</span>
               </div>
             </div>
@@ -154,7 +156,7 @@ export default function AuthPage() {
             /* ─── Login Form ────────────────────── */
             <form onSubmit={handleLogin} className={styles.form}>
               <div className={styles.formGroup}>
-                <label>📱 Phone Number or Email</label>
+                <label>Phone Number or Email</label>
                 <input
                   type="text"
                   placeholder="+91 98765 43210 or john@example.com"
@@ -164,7 +166,7 @@ export default function AuthPage() {
                 />
               </div>
               <div className={styles.formGroup}>
-                <label>🔒 Password</label>
+                <label>Password</label>
                 <input
                   type="password"
                   placeholder="Enter your password"
@@ -187,7 +189,7 @@ export default function AuthPage() {
             /* ─── Register Form ─────────────────── */
             <form onSubmit={handleRegister} className={styles.form}>
               <div className={styles.formGroup}>
-                <label>👤 Full Name</label>
+                <label>Full Name</label>
                 <input
                   type="text"
                   placeholder="John Doe"
@@ -197,7 +199,7 @@ export default function AuthPage() {
                 />
               </div>
               <div className={styles.formGroup}>
-                <label>📱 Mobile Number</label>
+                <label>Mobile Number</label>
                 <input
                   type="tel"
                   placeholder="+91 98765 43210"
@@ -208,7 +210,7 @@ export default function AuthPage() {
                 <span className={styles.hint}>Used for AI agent calls — no OTP needed</span>
               </div>
               <div className={styles.formGroup}>
-                <label>📧 Email</label>
+                <label>Email</label>
                 <input
                   type="email"
                   placeholder="john@example.com"
@@ -219,7 +221,7 @@ export default function AuthPage() {
               </div>
               <div className={styles.formRow}>
                 <div className={styles.formGroup}>
-                  <label>🔒 Password</label>
+                  <label> Password</label>
                   <input
                     type="password"
                     placeholder="Min 6 chars"
@@ -230,7 +232,7 @@ export default function AuthPage() {
                   />
                 </div>
                 <div className={styles.formGroup}>
-                  <label>🔒 Confirm</label>
+                  <label> Confirm</label>
                   <input
                     type="password"
                     placeholder="Re-enter"

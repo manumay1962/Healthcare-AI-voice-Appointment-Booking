@@ -26,7 +26,17 @@
   gap: 12px;
 }
 .logo { display: flex; align-items: center; gap: 12px; }
-.logoIcon { font-size: 1.8rem; }
+.logoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: white;
+  flex-shrink: 0;
+}
 .logoTitle {
   font-size: 1.35rem;
   font-weight: 700;
@@ -174,7 +184,14 @@
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
-.callIconBig { font-size: 2rem; position: relative; z-index: 2; }
+.callIconBig {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  position: relative;
+  z-index: 2;
+}
 .callPulseRing, .callPulseRing2 { display: none; }
 .callTitle {
   font-size: 1.1rem;
@@ -235,7 +252,19 @@
   display: flex; align-items: center; justify-content: center;
   font-size: 0.65rem; font-weight: 700;
 }
-.callStepArrow { color: var(--text-muted); font-size: 0.8rem; }
+.callStepArrow {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+.callStepArrow::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 1px;
+  background: var(--border);
+}
 
 /* ─── Agent Banner ────────────────────────────────── */
 .agentBanner { margin-bottom: 22px; animation: slideUp 0.4s ease backwards; }
@@ -251,7 +280,17 @@
   gap: 12px;
 }
 .agentBannerLeft { display: flex; align-items: center; gap: 14px; }
-.agentEmoji { font-size: 1.8rem; }
+.agentIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--accent-light);
+  color: var(--accent);
+  flex-shrink: 0;
+}
 .agentBannerLeft h3 { font-size: 0.9rem; font-weight: 600; color: var(--text); }
 .agentBannerLeft p { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; max-width: 460px; }
 .agentBannerRight {}
@@ -259,6 +298,16 @@
   color: var(--green); font-weight: 600; font-size: 0.78rem;
   background: var(--green-light);
   padding: 5px 14px; border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.agentStatus::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
 }
 
 /* ─── Table Section ───────────────────────────────── */
@@ -306,19 +355,38 @@
 .badgeGreen { background: var(--green-light); color: var(--green); }
 .badgeAmber { background: var(--amber-light); color: var(--amber); }
 .badgeRed { background: var(--red-light); color: var(--red); }
-.sourceBadge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.7rem; font-weight: 600; }
+.sourceBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+.sourceBadgeIcon {
+  display: inline-flex;
+  align-items: center;
+}
 .sourceVoice { background: var(--cyan-light); color: var(--cyan); }
 .sourceManual { background: #f0f1f5; color: var(--text-muted); }
 
 .deleteBtn {
-  background: none; border: none; cursor: pointer; font-size: 0.9rem;
+  background: none; border: none; cursor: pointer;
   padding: 5px 8px; border-radius: var(--radius-sm); opacity: 0.4; transition: all 0.2s;
+  display: inline-flex; align-items: center; color: var(--text-muted);
 }
 .deleteBtn:hover { opacity: 1; background: var(--red-light); }
 
 /* ─── Empty / Skeleton ────────────────────────────── */
 .emptyState { text-align: center; padding: 50px 20px; }
-.emptyIcon { font-size: 2.8rem; display: block; margin-bottom: 10px; }
+.emptyIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  color: var(--text-muted);
+}
 .emptyState h3 { font-size: 1rem; color: var(--text); margin-bottom: 4px; }
 .emptyState p { font-size: 0.82rem; color: var(--text-muted); }
 .skeletonWrap { display: flex; flex-direction: column; gap: 10px; padding: 14px 0; }

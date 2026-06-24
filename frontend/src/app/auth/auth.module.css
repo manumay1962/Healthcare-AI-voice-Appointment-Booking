@@ -30,7 +30,17 @@
   justify-content: center;
 }
 .brandContent { text-align: center; }
-.brandIcon { font-size: 2.8rem; display: block; margin-bottom: 14px; }
+.brandIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  margin: 0 auto 14px;
+}
 .brandContent h1 { font-size: 1.4rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
 .brandContent > p { color: var(--text-muted); font-size: 0.82rem; margin-bottom: 28px; }
 
@@ -42,6 +52,13 @@
   border-radius: var(--radius-sm); border: 1px solid var(--border);
 }
 .feature span:first-child { font-size: 1rem; flex-shrink: 0; }
+.featureDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
 
 .authForm {
   flex: 1;

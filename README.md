@@ -1,4 +1,4 @@
-# 🏥 City Health Clinic — AI-Powered Appointment Scheduler
+# City Health Clinic — AI-Powered Appointment Scheduler
 
 > [!IMPORTANT]
 > **Notice for Reviewers/Recruiters:**
@@ -7,7 +7,7 @@
 
 > A full-stack voice AI application using **Bolna** that allows patients to book medical appointments via a phone call. The AI receptionist ("Sarah") collects patient details and books the appointment automatically. The clinic admin dashboard displays appointments in real-time.
 
-## 🎯 Problem Statement
+## Problem Statement
 
 Medical clinics face high call volumes leading to:
 - Long hold times for patients
@@ -16,7 +16,7 @@ Medical clinics face high call volumes leading to:
 
 **Solution:** A Voice AI agent that handles inbound calls 24/7, collects patient information, and schedules appointments autonomously — with a real-time admin dashboard for clinic staff.
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 Patient (Phone Call)
@@ -40,7 +40,7 @@ Patient (Phone Call)
 └─────────────────┘
 ```
 
-## 📊 Outcome Metrics
+## Outcome Metrics
 
 | Metric | Target |
 |--------|--------|
@@ -49,15 +49,15 @@ Patient (Phone Call)
 | Appointment booking success rate | 95%+ |
 | Agent response time | < 2 seconds |
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Voice AI**: [Bolna.dev](https://bolna.dev) (Agent + Telephony)
 - **Backend**: Node.js + Express
 - **Frontend**: Next.js 16.2.6 (React 19)
-- **Database**: In-memory (demo) — can be swapped with PostgreSQL/MongoDB
+- **Database**: MongoDB (primary) / In-memory fallback for local dev
 - **Tunnel**: LocalTunnel / Ngrok (for webhook exposure)
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js 18+
@@ -65,8 +65,8 @@ Patient (Phone Call)
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/bolna-healthcare-agent.git
-cd bolna-healthcare-agent
+git clone https://github.com/manumay1962/Healthcare-AI-voice-Appointment-Booking.git
+cd Healthcare-AI-voice-Appointment-Booking
 ```
 
 ### 2. Start the Backend
@@ -94,11 +94,13 @@ npm run tunnel
 Copy the generated public URL and paste it into your Bolna agent's tool/webhook configuration as:
 `https://YOUR_TUNNEL_URL/api/webhook/bolna`
 
-## 📸 Screenshots
+## Screenshots
 
 *Dashboard showing real-time appointments booked via Voice AI and manual entry.*
 
-## 🎙️ Bolna Agent Configuration
+> Screenshots will be added after deployment. To preview the interface, clone the repo and run locally.
+
+## Bolna Agent Configuration
 
 **Agent Name:** Sarah — City Health Clinic Receptionist
 
@@ -119,9 +121,9 @@ Copy the generated public URL and paste it into your Bolna agent's tool/webhook 
 }
 ```
 
-## 📂 Project Structure
+## Project Structure
 ```
-bolna-healthcare-agent/
+Healthcare-AI-voice-Appointment-Booking/
 ├── backend/
 │   ├── server.js          # Express server + webhook + API
 │   ├── .env               # Environment variables
@@ -136,10 +138,10 @@ bolna-healthcare-agent/
 └── README.md
 ```
 
-## 📝 License
+## License
 
 MIT
 
-## 👤 Author
+## Author
 
-Built for the Bolna Full Stack Engineering Assignment.
+Personal project exploring AI voice automation in healthcare.

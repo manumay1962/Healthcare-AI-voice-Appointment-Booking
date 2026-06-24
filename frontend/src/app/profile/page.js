@@ -130,7 +130,7 @@ export default function ProfilePage() {
 
       {message.text && (
         <div className={`${styles.message} ${styles[`message_${message.type}`]}`}>
-          {message.type === "success" ? "✅" : "❌"} {message.text}
+          {message.text}
         </div>
       )}
 
@@ -147,15 +147,15 @@ export default function ProfilePage() {
               <h2 className={styles.userName}>{user.name}</h2>
               <div className={styles.infoGrid}>
                 <div className={styles.infoItem}>
-                  <span className={styles.infoLabel}>📱 Phone</span>
+                  <span className={styles.infoLabel}>Phone</span>
                   <span className={styles.infoValue}>{user.phone}</span>
                 </div>
                 <div className={styles.infoItem}>
-                  <span className={styles.infoLabel}>📧 Email</span>
+                  <span className={styles.infoLabel}>Email</span>
                   <span className={styles.infoValue}>{user.email || "Not set"}</span>
                 </div>
                 <div className={styles.infoItem}>
-                  <span className={styles.infoLabel}>📅 Member Since</span>
+                  <span className={styles.infoLabel}>Member Since</span>
                   <span className={styles.infoValue}>
                     {new Date(user.createdAt).toLocaleDateString("en-US", {
                       year: "numeric", month: "long", day: "numeric",
@@ -163,12 +163,12 @@ export default function ProfilePage() {
                   </span>
                 </div>
                 <div className={styles.infoItem}>
-                  <span className={styles.infoLabel}>📋 Appointments</span>
+                  <span className={styles.infoLabel}>Appointments</span>
                   <span className={styles.infoValue}>{appointments.length} total</span>
                 </div>
               </div>
               <button className={styles.editBtn} onClick={() => setEditing(true)}>
-                ✏️ Edit Profile
+                Edit Profile
               </button>
             </div>
           ) : (
@@ -239,7 +239,7 @@ export default function ProfilePage() {
                   Cancel
                 </button>
                 <button type="submit" className={styles.saveBtn} disabled={saving}>
-                  {saving ? "Saving..." : "💾 Save Changes"}
+                  {saving ? "Saving..." : "Save Changes"}
                 </button>
               </div>
             </form>
@@ -248,28 +248,27 @@ export default function ProfilePage() {
 
         {/* ─── User Appointments ─────────────── */}
         <section className={styles.appointmentsSection}>
-          <h3>📋 My Appointments</h3>
+          <h3>My Appointments</h3>
           {appointments.length === 0 ? (
             <div className={styles.emptyAppts}>
-              <span>📭</span>
-              <p>No appointments yet. Book one from the dashboard!</p>
+              <p>No appointments yet. Book one from the dashboard.</p>
             </div>
           ) : (
             <div className={styles.apptList}>
               {appointments.map((apt) => (
                 <div key={apt.id} className={styles.apptCard}>
                   <div className={styles.apptTop}>
-                    <span className={styles.apptDate}>📅 {apt.date}</span>
-                    <span className={styles.apptTime}>🕐 {apt.time}</span>
+                    <span className={styles.apptDate}>{apt.date}</span>
+                    <span className={styles.apptTime}>{apt.time}</span>
                     <span className={`${styles.apptBadge} ${
                       apt.source === "bolna-voice-agent" ? styles.apptVoice : styles.apptManual
                     }`}>
-                      {apt.source === "bolna-voice-agent" ? "🎙️ Voice AI" : "🖥️ Manual"}
+                      {apt.source === "bolna-voice-agent" ? "Voice AI" : "Manual"}
                     </span>
                   </div>
                   <div className={styles.apptBottom}>
-                    <span>👨‍⚕️ {apt.doctor}</span>
-                    <span>💬 {apt.reason}</span>
+                    <span>{apt.doctor}</span>
+                    <span>{apt.reason}</span>
                   </div>
                 </div>
               ))}
